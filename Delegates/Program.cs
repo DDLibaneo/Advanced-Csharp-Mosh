@@ -6,7 +6,10 @@ namespace Delegates
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+
+            Console.WriteLine("Press a key to close...");
+            Console.ReadKey();
         }
     }
 }

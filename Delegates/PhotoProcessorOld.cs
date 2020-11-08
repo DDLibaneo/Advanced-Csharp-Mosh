@@ -4,13 +4,8 @@ using System.Text;
 
 namespace Delegates
 {
-    public class PhotoProcessor
+    public class PhotoProcessorOld
     {
-        public delegate void PhotoFilterHandler(Photo photo); // our delegate
-        // an instance of this delegate can hold a pointer to a function or a
-        // group of function that have this signature (in this case void as 
-        // return type, Photo object as parameter
-
         public void Process(string path)
         {
             var photo = Photo.Load(path);
