@@ -11,14 +11,11 @@ namespace Delegates
         // group of function that have this signature (in this case void as 
         // return type, Photo object as parameter
 
-        public void Process(string path)
+        public void Process(string path, PhotoFilterHandler filterHandler)
         {
             var photo = Photo.Load(path);
 
-            var filters = new PhotoFilters();
-            filters.ApplyBrightness(photo);
-            filters.ApplyContrast(photo);
-            filters.Resize(photo);
+            filterHandler(photo);
 
             photo.Save();
         }
