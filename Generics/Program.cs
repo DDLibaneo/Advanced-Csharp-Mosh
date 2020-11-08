@@ -29,6 +29,11 @@ namespace Generics
             var dictionary = new GenericDictionary<string, Book>();
             dictionary.Add("1234", new Book());
 
+            var number = new Nullable<int>(5);
+
+            Console.WriteLine("Has value ? " + number.HasValue);
+            Console.WriteLine("Value: " + number.GetValueOrDefault());
+
             Console.WriteLine("Press a key to close...");
             Console.ReadKey();
         }

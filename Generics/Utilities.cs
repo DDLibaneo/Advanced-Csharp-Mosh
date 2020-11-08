@@ -27,6 +27,5 @@ namespace Generics
         // where T : class ('has to be a reference type' - mosh)
         // where T : new() ('has to have a default constructor' - mosh)
 
-
     }
 }
