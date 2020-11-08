@@ -2,6 +2,7 @@
 
 namespace Generics
 {
+
     class Program
     {
         static void Main(string[] args)
@@ -21,7 +22,12 @@ namespace Generics
             var books = new GenericList<Book>();
             books.Add(new Book());
 
-            //Genericos em .NET são encontrados nas classes da 'System.Collections.Generic'
+            //Genericos em .NET são encontrados nas classes da 'System.Collections.Generic'.
+
+            //Agora os dictionary.
+
+            var dictionary = new GenericDictionary<string, Book>();
+            dictionary.Add("1234", new Book());
 
             Console.WriteLine("Press a key to close...");
             Console.ReadKey();
