@@ -6,11 +6,20 @@ namespace LambdaExpressions
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Example 1 - basic lambda examples");
+
             FirstExample();
 
+            Console.WriteLine("\n---------------");
+            Console.WriteLine("Example 2 - on predicates");            
 
+            SecondExample();
+
+            Console.WriteLine("Press a key to close...");
+            Console.ReadKey();
         }
 
+        // Exemplo 1
         private static void FirstExample()
         {
             // The syntax for lambda works like this: arguments => expression
@@ -39,14 +48,45 @@ namespace LambdaExpressions
             // without args: () => ...
             // with only 1 arg: x => ...
             // with multiple args: (x, y, z)
-
-            Console.WriteLine("Press a key to close...");
-            Console.ReadKey();
         }
 
         static int SquareNonLambda(int number)
         {
             return number * number;
+        }
+
+        // Exemplo 2
+        private static void SecondExample()
+        {
+            var books = new BookRepository().GetBooks();
+
+            // A Predicate is basically a delegate which points to a method that 
+            // gets a Book (in this case) and returns a boolean value specifying 
+            // if a given condition is satisfied
+
+            // this is what I always did, but simplified. I finally understand 
+            // lambda functions
+            Console.WriteLine("Cheapest books by passing a normal function to the delegate");
+            var cheapBooksNormalFunction = books.FindAll(IsCheaperThan10Dollars);
+
+            foreach (var book in cheapBooksNormalFunction)
+            {
+                Console.WriteLine(book.Title);
+            }
+
+            Console.WriteLine("Cheapest books by passing a lambda function to the delegate");
+            var cheapBooksLambda = books.FindAll(book => book.Price < 10);
+
+            foreach (var book in cheapBooksLambda)
+            {
+                Console.WriteLine(book.Title);
+            }
+        }
+
+        // example of a predicate function 
+        static bool IsCheaperThan10Dollars(Book book)
+        {
+            return book.Price < 10;
         }
     }
 }
