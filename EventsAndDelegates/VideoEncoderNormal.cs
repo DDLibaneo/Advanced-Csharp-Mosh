@@ -2,9 +2,9 @@
 
 namespace EventsAndDelegates
 {
-    internal class VideoEncoder
+    internal class VideoEncoderNormal
     {
-        public VideoEncoder() { }
+        public VideoEncoderNormal() { }
 
         public void Encode(Video video)
         {

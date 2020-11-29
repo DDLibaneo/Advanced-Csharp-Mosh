@@ -11,12 +11,18 @@ namespace EventsAndDelegates
                 Title = "Video" 
             };
 
-            var videoEncoder = new VideoEncoder();
+            //var videoEncoder = new VideoEncoderNormal();
+            var videoEncoder = new VideoEncoderUsingEvents();
 
             videoEncoder.Encode(video);
 
             Console.WriteLine("Press a key to close...");
             Console.ReadKey();
+        }
+
+        public class MailService
+        {
+
         }
     }
 }
