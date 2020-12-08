@@ -6,9 +6,9 @@ namespace EventsAndDelegates
     {
         public MailService() { }
 
-        public void OnVideoEncoded(object source, EventArgs e)
+        public void OnVideoEncoded(object source, VideoEventArgs e)
         {
-            Console.WriteLine("MailService: Sending an Email...");
+            Console.WriteLine("MailService: Sending an Email... " + e.Video.Title);
         }
     }
 }

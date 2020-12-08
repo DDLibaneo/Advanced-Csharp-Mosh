@@ -21,29 +21,43 @@ namespace EventsAndDelegates
         // to send to the event 
 
         // Remember: a delegate stores references to methods that have the specified signature
-        public delegate void VideoEncodedEventHandler(object source, EventArgs args);
+        // Abaixo um exemplo de assinatura com EventArgs de parametro
+        // public delegate void VideoEncodedEventHandler(object source, EventArgs args);
 
-        public event VideoEncodedEventHandler VideoEncoded;        
+        // Abaixo a forma antiga de se criar um evento, criando um delegate para usar no evento
+        // public delegate void VideoEncodedEventHandler(object source, VideoEventArgs args);
+        // public event VideoEncodedEventHandler VideoEncoded;        
+
+        // Abaixo o jeito moderno de criar um evento, com o delegate type EventHandler
+        // O exemplo abaixo é equivalente ao exemplo acima.
+        public event EventHandler<VideoEventArgs> VideoEncoded;
+
+        // exemplo sem mandar um objeto ao subscriber:
+        // public event EventHandler VideoEncoded;
 
         public void Encode(Video video)
         {
             System.Console.WriteLine("Encoding video...");
             Thread.Sleep(2000);
 
-            OnVideoEncoded();
+            OnVideoEncoded(video);
         }
 
         // This is the method that raises the event
         // Will notify all subscribers of this event
-        protected virtual void OnVideoEncoded()
+        protected virtual void OnVideoEncoded(Video video)
         {
             // the source of this event, or the publisher of this event, is
             // this class / object. So we pass "this" as the first argument
-            VideoEncoded?.Invoke(this, EventArgs.Empty);
+            // Exemplo abaixo usando EventArgs com invoke
+            // VideoEncoded?.Invoke(this, EventArgs.Empty);
 
-            // jeito normal:
-            //if (VideoEncoded != null)
-            //    VideoEncoded(this, EventArgs.Empty);
+            // Exemplo abaixo usando EventArgs com um if
+            // if (VideoEncoded != null)
+            //   VideoEncoded(this, EventArgs.Empty);,
+
+            // Exemplo abaixo passando um objeto de Video como parametroa
+            VideoEncoded?.Invoke(this, new VideoEventArgs() { Video = video });
         }
     }
 }
