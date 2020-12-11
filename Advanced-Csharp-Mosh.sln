@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Delegates", "Delegates\Dele
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaExpressions", "LambdaExpressions\LambdaExpressions.csproj", "{D9C0F1D8-E487-478A-BCA8-7B06103E8F1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsAndDelegates", "EventsAndDelegates\EventsAndDelegates.csproj", "{F6EC0CBC-5315-46BA-87AE-6CBABA628E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventsAndDelegates", "EventsAndDelegates\EventsAndDelegates.csproj", "{F6EC0CBC-5315-46BA-87AE-6CBABA628E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{AF361493-E692-49BB-BC01-2636FA50C8A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F6EC0CBC-5315-46BA-87AE-6CBABA628E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6EC0CBC-5315-46BA-87AE-6CBABA628E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6EC0CBC-5315-46BA-87AE-6CBABA628E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF361493-E692-49BB-BC01-2636FA50C8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF361493-E692-49BB-BC01-2636FA50C8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF361493-E692-49BB-BC01-2636FA50C8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF361493-E692-49BB-BC01-2636FA50C8A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
