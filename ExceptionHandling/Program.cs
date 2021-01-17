@@ -1,10 +1,23 @@
 ﻿using System;
+using System.IO;
 
 namespace ExceptionHandling
 {
     class Program
     {
         static void Main(string[] args)
+        {            
+            Example1();
+
+            Example2();
+
+            Example3();
+
+            Console.WriteLine("\nPress a key to close...");
+            Console.ReadKey();
+        }
+
+        private static void Example1()
         {
             try
             {
@@ -15,7 +28,7 @@ namespace ExceptionHandling
             {
                 Console.WriteLine("You cannot divide by zero.");
             }
-            catch(ArithmeticException ex)
+            catch (ArithmeticException ex)
             {
                 Console.WriteLine("An arithmetic error occurred.");
             }
@@ -33,9 +46,42 @@ namespace ExceptionHandling
             }
 
             // stack trace é a sequencia de métodos chamados até chegar no disparo da exception.
-
-            Console.WriteLine("\nPress a key to close...");
-            Console.ReadKey();
         }
-    }
+
+        private static void Example2()
+        {
+            StreamReader streamReader = null;
+
+            try
+            {
+                streamReader = new StreamReader(@"D:\Livros\A_Nao_Violencia_Uma_historia_Domenico_Losurdo.pdf");
+                var content = streamReader.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Sorry, an unexpected error occurred.");
+            }
+            finally
+            {
+                if (streamReader != null)
+                    streamReader.Dispose();
+            }
+        }
+
+        private static void Example3()
+        {
+            try
+            {
+                var filePath = @"D:\Livros\A_Nao_Violencia_Uma_historia_Domenico_Losurdo.pdf";
+
+                using var streamReader = new StreamReader(filePath);
+
+                var content = streamReader.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Sorry, an unexpected error occurred.");
+            }
+        }
+    }    
 }
