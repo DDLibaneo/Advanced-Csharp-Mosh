@@ -13,10 +13,12 @@ namespace ExceptionHandling
 
             Example3();
 
+            Example4();
+
             Console.WriteLine("\nPress a key to close...");
             Console.ReadKey();
         }
-
+        
         private static void Example1()
         {
             try
@@ -26,15 +28,15 @@ namespace ExceptionHandling
             }
             catch (DivideByZeroException ex)
             {
-                Console.WriteLine("You cannot divide by zero.");
+                Console.WriteLine("\nYou cannot divide by zero.");
             }
             catch (ArithmeticException ex)
             {
-                Console.WriteLine("An arithmetic error occurred.");
+                Console.WriteLine("\nAn arithmetic error occurred.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Sorry, an unexpected error occurred.");
+                Console.WriteLine("\nSorry, an unexpected error occurred.");
             }
             finally // Usado geralmente pra fazer Dispose. 
             {
@@ -59,7 +61,7 @@ namespace ExceptionHandling
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Sorry, an unexpected error occurred.");
+                Console.WriteLine("\nSorry, an unexpected error occurred.");
             }
             finally
             {
@@ -80,8 +82,22 @@ namespace ExceptionHandling
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Sorry, an unexpected error occurred.");
+                Console.WriteLine("\nSorry, an unexpected error occurred.");
             }
         }
-    }    
+
+        private static void Example4()
+        {
+            try
+            {
+                var youtubeApi = new YoutubeApi();
+
+                var videos = youtubeApi.GetVideos("something");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("\n" + ex.Message + "\n");
+            }
+        }
+    }
 }
