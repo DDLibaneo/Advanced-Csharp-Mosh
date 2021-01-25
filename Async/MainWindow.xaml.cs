@@ -27,10 +27,28 @@ namespace Async
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_DownloadHtml(object sender, RoutedEventArgs e)
         {
             //DownloadHtml("https://www.marxists.org");
+            
             DownloadHtmlAsync("https://www.marxists.org");
+        }
+
+        private async void Button_GetHtml(object sender, RoutedEventArgs e)
+        {
+            //var html = GetHtml("https://www.marxists.org");
+            
+            // O await só pode ser utilizado dentro de métodos marcados com async.
+            // var html = await GetHtmlAsync("https://www.marxists.org");
+
+            // Tambem pode ser feito do seguinte jeito:
+            var getHtmlTask = GetHtmlAsync("https://www.marxists.org");
+
+            MessageBox.Show("Waiting for the task to complete");
+
+            var html = await getHtmlTask;
+
+            MessageBox.Show(html.Substring(0, 10));
         }
 
         // What is a Task? A Task is an object that encapsulates the state of an asynchronous
@@ -68,6 +86,20 @@ namespace Async
             {
                 streamWriter.Write(html);
             }
+        }
+        
+        public string GetHtml(string url)
+        {
+            var webClient = new WebClient();
+
+            return webClient.DownloadString(url);
+        }
+
+        public async Task<string> GetHtmlAsync(string url)
+        {
+            var webClient = new WebClient();
+
+            return await webClient.DownloadStringTaskAsync(url);
         }
     }
 }
